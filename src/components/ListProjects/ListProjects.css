@@ -1,0 +1,14 @@
+.fade{
+    position: absolute;
+    margin-bottom: auto;
+    width: 24rem;
+    filter: grayscale(60%);
+    -webkit-transition: height 0.5s;
+   transition: height  0.5s;
+
+}
+
+.tool{
+    padding: 0.5rem;
+    transition: opacity  3s ;
+}

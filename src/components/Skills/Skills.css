@@ -1,0 +1,167 @@
+.tag-list{
+	width: 100%;
+	display: flex;
+	position:relative;
+	font-family: "Montserrat";
+	overflow: hidden;
+}
+
+.inner{
+	width: 140%;
+	display: flex;
+	gap: 1rem;
+	animation: loop 50s -25s linear infinite;
+
+
+
+
+
+}
+.inner2{
+	width: 140%;
+	display: flex;
+	gap: 1rem;
+	animation: loop2 50s linear infinite;
+
+
+
+}
+
+.tag{
+	display: flex;
+	align-items: center;
+	gap: 0 0.2rem;
+	color:#e2e8f0;
+	font-size: 0.9rem;
+	background-color: #334155;
+	padding: 0.7rem 1rem;
+	border-radius: 0.4rem;
+	box-shadow: 0 0.1rem 0.2rem #00000033,
+	0 0.1rem 0.2rem #0000004d,
+	0 0.1rem 0.2rem #00000066;
+	
+}
+.tag span{
+	font-size: 1.2rem;
+	color: #64748b;
+}
+.fade{
+	display: flex;
+	height: 10rem;
+	background: linear-gradient(90deg,
+	#1e293b,transparent 30%,
+	transparent 70%,#1e293b);
+	pointer-events: none;
+}
+
+/*//////////////////////////////////*/
+.item {
+	border-radius: 15px;
+	background-repeat:  no-repeat;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 0px 2px 3px 1px #0006;
+	&:before {
+		line-height: 50px;
+		padding-left: 10px;
+		mix-blend-mode: exclusion;
+		border-radius: 15px;
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(110deg, #fffd, #fff0 20%, #fff0 70%, #fffd);
+		opacity: 1;
+		transition: opacity 0.65s ease 0s;
+		box-sizing: border-box;
+	}
+	&:after {
+		content: "";
+		background-color: #fff9;
+		opacity: 0.6;
+		top: 0;
+		bottom: 0;
+		left: -100%;
+		position: absolute;
+		width: 5vmin;
+		box-shadow: 0 0 10vmin 2.5vmin #fff;
+		transform: skew(-20deg);
+		transition: all 0.25s ease;
+	}
+	&:hover {
+		&:before {
+			opacity: 0;
+			transition: opacity 0.65s ease 0s;
+		}
+		&:after {
+			left: 400px;
+			transition: left 0.5s ease 0s;
+		}
+	}
+}
+
+.item:nth-child(1) {
+	background-image: url(https://miro.medium.com/v2/resize:fit:1400/0*cl7fc6pt1MHjIF4K.png);
+}
+.item:nth-child(2) {
+	background-image: url(https://thecyphere.com/wp-content/uploads/2021/05/resources_network-vulnerability-analysis_730x546.jpg);
+}
+.item:nth-child(3) {
+	background-image: url(https://i.pinimg.com/236x/ad/c2/37/adc2373c602fe00ecd70357e97408479.jpg);
+}
+
+
+
+
+
+
+
+
+@-webkit-keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes loop{
+	0% {
+		transform: translateX(100%);
+	  }
+	  100% {
+		transform: translateX(-100%);
+	  }
+
+
+}
+@keyframes loop2{
+	0% {
+		transform: translateX(0%);
+	  }
+	  100% {
+		transform: translateX(-200%);
+	  }
+
+
+}
