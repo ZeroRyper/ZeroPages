@@ -63,16 +63,17 @@ function Projects() {
         </h2>
         <div>
           <ul className="flex pt-10 justify-around mx-60">
-            {category.map((item) => (
+            {category.map((item,key) => (
               <ButtonCategory 
               title={item}
+              key={key}
               setCategoryIn={setCategoryIn}
               />
             ))}
           </ul>
           <ul className="flex pt-10 justify-around mx-96 ">
-            {tools.map((element) => (
-              <ButtonTools title={element} setCategoryIn={setCategoryIn} />
+            {tools.map((element,key) => (
+              <ButtonTools key={key} title={element} setCategoryIn={setCategoryIn} />
             ))}
           </ul>
         </div>

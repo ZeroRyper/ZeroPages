@@ -1,6 +1,10 @@
 import { SlActionUndo } from "react-icons/sl";
+import PropTypes from "prop-types";
 
 function References({ setShowReferences }) {
+  References.propTypes = {
+    setShowReferences: PropTypes.string.isRequired,
+  };
   return (
     <div className=" bg-black h-full  ">
       <div className="flex bg-slate-800 pl-2">
@@ -11,7 +15,7 @@ function References({ setShowReferences }) {
         />
         <img
           className="flex text-white h-14 m-2 rounded-full"
-          src="../Profile_MSCSALAS.png"
+          src="./Profile_MSCSALAS.png"
           alt="Foto Ing Salas"
         />
         <div className="my-auto">
