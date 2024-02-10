@@ -9,7 +9,7 @@ function Descrip() {
       <div className="card flex-col w-full mx-10 py-5  bg-white">
         <img
           className="rounded-full h-40 mx-auto"
-          src="../ZeroRyper.png"
+          src="./ZeroRyper.png"
           alt=""
         />
         <p className="text-xl xl:text-lg sm:text-sm px-10 py-5 text-center font-sixtyfour ">
@@ -31,7 +31,7 @@ function Descrip() {
           <div className="flex mt-1 py-2 bg-black hover:bg-stone-900 hover:border-l-8 cursor-pointer"  onClick={() => setShowReferences(false)}>
             <img
               className="flex text-white h-14 m-2 rounded-full"
-              src="../Profile_MSCSALAS.png"
+              src="./Profile_MSCSALAS.png"
               alt="Foto Ing Salas"
             />
             <div className="my-auto">
