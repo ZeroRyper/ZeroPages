@@ -34,7 +34,7 @@ function ListProjects({  img, tools, key, secImg, hrefWeb }) {
             alt=""
           />
           <ul
-            className={` absolute w-full h-full flex justify-around items-center px-20`}
+            className={`absolute w-full h-full flex justify-around items-center px-20`}
           >
             {tools.map((tools, key) => (
               <li
