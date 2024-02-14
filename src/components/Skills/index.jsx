@@ -18,7 +18,7 @@ import { MdDevices } from "react-icons/md";
 
 function Skills() {
   return (
-    <section id="skills" className="skills">
+    <section id="skills" className="skills my-10">
       <div className="bg-Skills h-[1200px] ">
         <div className="flex-col py-12">
           <h3 className="flex justify-center text-white text-9xl pb-16 pt-14 font-bills">
