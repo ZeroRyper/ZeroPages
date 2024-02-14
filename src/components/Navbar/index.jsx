@@ -40,7 +40,7 @@ function Navbar() {
               to="descrip"
               spy={true}
               smooth={true}
-              offset={40}
+              offset={-200}
               duration={500}
               className="cursor-pointer"
             >
@@ -52,6 +52,7 @@ function Navbar() {
               to="skills"
               spy={true}
               smooth={true}
+              offset={-200}
               duration={500}
               className="cursor-pointer"
             >
@@ -63,6 +64,7 @@ function Navbar() {
               to="projects"
               spy={true}
               smooth={true}
+              offset={-200}
               duration={500}
               className="cursor-pointer"
             >
