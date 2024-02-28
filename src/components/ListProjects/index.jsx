@@ -2,11 +2,11 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import "./ListProjects.css";
 
-function ListProjects({  img, tools, key, secImg, hrefWeb }) {
+function ListProjects({  firstImg, tools, key, secImg, hrefWeb }) {
   const [imgStatus, setImgStatus] = useState("h-0");
   const [toolStatus, setToolStatus] = useState("opacity-0");
   ListProjects.propTypes = {
-    img: PropTypes.string.isRequired, // Optional
+    firstImg: PropTypes.string.isRequired, // Optional
     tools: PropTypes.arrayOf(PropTypes.string).isRequired, // Optional array of strings
     key: PropTypes.number.isRequired,
     secImg: PropTypes.string.isRequired, // Optional
@@ -18,7 +18,7 @@ function ListProjects({  img, tools, key, secImg, hrefWeb }) {
         <a
           href={hrefWeb}
           onMouseEnter={() => {
-            setImgStatus("h-80");
+            setImgStatus("h-[20rem]");
             setToolStatus("tool opacity-100");
           }}
           onMouseLeave={() => {
@@ -39,14 +39,14 @@ function ListProjects({  img, tools, key, secImg, hrefWeb }) {
             {tools.map((tools, key) => (
               <li
                 key={key}
-                className={`bg-[#122d42] text-[#3cd8dd] rounded-xl mx-2 ${toolStatus}`}
+                className={`bg-[#122d42] text-[#3cd8dd] rounded-xl mx-0.5  ${toolStatus}`}
               >
                 {tools}
               </li>
             ))}
           </ul>
 
-          <img className="w-96 h-80 rounded-2xl" src={img} alt="" />
+          <img className="lg:w-[20rem] md:w-[20rem] lg:h-[20rem] md:h-[20rem] rounded-2xl" src={firstImg} alt="" />
         </a>
       </li>
     </div>

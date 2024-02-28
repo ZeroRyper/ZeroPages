@@ -7,5 +7,5 @@ export default defineConfig({
   plugins: [react(),    tailwindcss({
     // ... your Tailwind configuration
   }),],
-  base:'/ZeroPages/',
+  base:'./',
 })

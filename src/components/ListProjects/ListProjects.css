@@ -1,7 +1,7 @@
 .fade{
     position: absolute;
     margin-bottom: auto;
-    width: 24rem;
+    width: 30rem;
     filter: grayscale(60%);
     -webkit-transition: height 0.5s;
    transition: height  0.5s;

@@ -2,11 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-Skills{
-	background:no-repeat url(/Fondo_Skills.png);
-}
-.bg-Projects{
-	background:no-repeat url(/Projects.png);
-
-}
 

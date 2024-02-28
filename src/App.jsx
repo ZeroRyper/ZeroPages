@@ -1,5 +1,5 @@
 import Descrip from "./components/Descrip";
-import Skills from "./components/Skills";
+import Experiences from "./components/Experiences";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projectos";
 import "./App.css";
@@ -8,9 +8,9 @@ function App() {
     <div>
               <Navbar />
 
-      <div className="z-40 flex-col mx-auto 2xl:my-8 relative 2xl:rounded-3xl bg-backColor max-w-[1440px]">
+      <div className="grid grid-cols-1 gap-20 ">
         <Descrip />
-        <Skills />
+        <Experiences />
         <Projects />
       </div>
     </div>

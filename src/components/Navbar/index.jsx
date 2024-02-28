@@ -6,33 +6,38 @@ import { useState, useEffect } from "react";
 
 function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [isSticky, setIsSticky] = useState('sticky');
+  const [isSticky, setIsSticky] = useState("sticky");
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
 
       if (currentScrollPos > prevScrollPos) {
-        setIsSticky('show');
+        setIsSticky("show");
       } else if (currentScrollPos < prevScrollPos) {
-        setIsSticky('sticky');
+        setIsSticky("sticky");
       }
 
       setPrevScrollPos(currentScrollPos);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos]);
 
-
-
   return (
-    <section className={`navbar flex-col mb-40 z-50 ${isSticky}`}>
-      <div className="flex w-full justify-between py-7 h-20 ">
-        <div className="flex items-center w-2/12">
-          <img className=" w-20 " src="./ZR_1.png" alt="Icon ZeroRyper" />
+    <section className={`navbar flex-col -mb-20 z-50 ${isSticky}`}>
+      <div className="flex w-full py-7 h-20 ">
+        <div className="flex items-center mx-2 xl:w-2/12 md:w-2/12">
+          <img
+            className="w-10 sm:w-8 mr-4"
+            src="./ZR_1.png"
+            alt="Icon ZeroRyper"
+          />
+          <p className="xl:text-lg md:text-base text-white font-metal">
+            ZERO PAGE
+          </p>
         </div>
         <ul className=" flex items-center justify-around w-10/12">
           <li className="  text-[#cacaca] hover:text-white font-nosifer">
@@ -40,9 +45,9 @@ function Navbar() {
               to="descrip"
               spy={true}
               smooth={true}
-              offset={-200}
+              offset={-300}
               duration={500}
-              className="cursor-pointer"
+              className="cursor-pointer lg:text-sm md:text-xs"
             >
               About Me
             </Link>
@@ -54,7 +59,7 @@ function Navbar() {
               smooth={true}
               offset={-200}
               duration={500}
-              className="cursor-pointer"
+              className="cursor-pointer lg:text-sm md:text-sm"
             >
               EXPERIENCES
             </Link>
@@ -66,7 +71,7 @@ function Navbar() {
               smooth={true}
               offset={-200}
               duration={500}
-              className="cursor-pointer"
+              className="cursor-pointer lg:text-sm md:text-sm"
             >
               PROJECTS
             </Link>
@@ -79,7 +84,7 @@ function Navbar() {
               rel="noopener noreferrer"
               href="https://github.com/ZeroRyper"
             >
-              <BiLogoGithub style={{ color: "white", fontSize: "2.5rem" }} />
+              <BiLogoGithub className="text-2xl" style={{ color: "white" }} />
             </a>
             <a
               target="_blank"
@@ -87,11 +92,12 @@ function Navbar() {
               href="https://www.linkedin.com/in/erick-irvin-padilla-mercado-786463194/"
             >
               <BiLogoLinkedinSquare
-                style={{ color: "white", fontSize: "2.5rem" }}
+                className="text-2xl"
+                style={{ color: "white" }}
               />
             </a>
             <a href="mailto:erick100520@gmail.com">
-              <IoMail style={{ color: "white", fontSize: "2.5rem" }} />
+              <IoMail className="text-2xl" style={{ color: "white" }} />
             </a>
           </div>
         </div>

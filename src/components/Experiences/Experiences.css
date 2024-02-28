@@ -10,21 +10,13 @@
 	width: 140%;
 	display: flex;
 	gap: 1rem;
-	animation: loop 50s -25s linear infinite;
-
-
-
-
-
+	animation: loop 80s -40s linear infinite;
 }
 .inner2{
 	width: 140%;
 	display: flex;
 	gap: 1rem;
-	animation: loop2 50s linear infinite;
-
-
-
+	animation: loop2 80s linear infinite;
 }
 
 .tag{
@@ -110,9 +102,6 @@
 .item:nth-child(2) {
 	background-image: url(https://thecyphere.com/wp-content/uploads/2021/05/resources_network-vulnerability-analysis_730x546.jpg);
 }
-.item:nth-child(3) {
-	background-image: url(https://i.pinimg.com/236x/ad/c2/37/adc2373c602fe00ecd70357e97408479.jpg);
-}
 
 
 
@@ -162,6 +151,4 @@
 	  100% {
 		transform: translateX(-200%);
 	  }
-
-
 }
