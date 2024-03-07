@@ -1,12 +1,12 @@
 import { useState } from "react";
-import "./Descrip.css";
-import References from "../References";
+import "./Description.css";
+import References from "./References";
 
-function Descrip() {
+function Description() {
   const [referenceShow, setShowReferences] = useState(true);
   return (
     <serction className="flex justify-center w-full" id="descrip">
-      <div className="grid grid-cols-2 gap-10 mt-40">
+      <div className="grid grid-cols-2 gap-10 ">
         <div className="card mx-10 lg:w-[45rem] md:w-[25rem] bg-white">
           <img
             className="rounded-full h-40 mx-auto"
@@ -63,4 +63,4 @@ function Descrip() {
   );
 }
 
-export default Descrip;
+export default Description;

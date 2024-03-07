@@ -6,7 +6,7 @@
   }
 .navbar.show {
     position: fixed;
-    top:-80px;
+    top:-120px;
 		transition: top 1s ease;
 		width: 100%;
 	}

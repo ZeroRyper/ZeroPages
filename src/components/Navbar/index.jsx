@@ -27,8 +27,8 @@ function Navbar() {
   }, [prevScrollPos]);
 
   return (
-    <section className={`navbar flex-col -mb-20 z-50 ${isSticky}`}>
-      <div className="flex w-full py-7 h-20 ">
+    <section className={`navbar flex-col z-50 ${isSticky}`}>
+      <div className="flex w-full h-20 mb-10">
         <div className="flex items-center mx-2 xl:w-2/12 md:w-2/12">
           <img
             className="w-10 sm:w-8 mr-4"

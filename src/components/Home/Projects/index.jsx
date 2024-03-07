@@ -1,23 +1,23 @@
 import "./Projects.css";
-import ListProjects from "../ListProjects";
+import ListProjects from "../Projects/ListProjects";
 import { useState } from "react";
-import ButtonTools from "../FilterButtonTools";
-import ButtonCategory from "../FilterButtonCategory";
+import ButtonTools from "../Projects/ListProjects/FilterButtonTools";
+import ButtonCategory from "../Projects/ListProjects/FilterButtonCategory";
 
 function Projects() {
   const projectos = [
     {
       category: ["Front End", "HTML", "JAVASCRIPT", "CSS", "SASS"],
-      firstImg: "../1/firstImg.png",
-      secImg: "../1/secImg.jpg",
+      firstImg: "./1/firstImg.png",
+      secImg: "./1/secImg.jpg",
       tools: ["HTML", "JS", "CSS", "SASS"],
       hrefWeb: "https://zeroryper.github.io/Ableton_Bocchi/",
       id: 1,
     },
     {
       category: ["Front End", "REACT", "CSS", "HTML", "JAVASCRIPT"],
-      firstImg: "../2/firstImg.png",
-      secImg: "../2/secImg.png",
+      firstImg: "./2/firstImg.png",
+      secImg: "./2/secImg.png",
       tools: ["REACT", "CSS", "HTML", "JS"],
       hrefWeb: "https://zeroryper.github.io/org/",
       id: 2,
@@ -31,7 +31,7 @@ function Projects() {
         "JAVASCRIPT",
         "TAILWINDCSS",
       ],
-      firstImg: "../3/firstImg.png",
+      firstImg: "./3/firstImg.png",
       secImg:
         "https://help.nflxext.com/43e0db2f-fea0-4308-bfb9-09f2a88f6ee4_what_is_netflix_1_en.png",
       tools: ["REACT", "CSS", "HTML", "JS", "TAILWINDCSS"],
@@ -50,7 +50,7 @@ function Projects() {
     },
     {
       category: ["Front End", "REACT", "HTML", "CSS", "JAVASCRIPT"],
-      firstImg: "../4/firstImg.png",
+      firstImg: "./4/firstImg.png",
       secImg:
         "https://www.cnet.com/personal-finance/assets/uploads/resize/1149dab9bcfeb6dfe75fc2f7df9ac3db6be6b7a3/m1/2023/06/OnlineBankingGettyImages01-scaled.jpg?auto=webp",
       tools: ["REACT", "HTML", "CSS", "JS"],
@@ -84,8 +84,8 @@ function Projects() {
               />
             ))}
           </ul>
-          <div className="flex justify-center">
-            <ul className="grid lg:gap-20 md:gap-5 lg:grid-cols-3 md:grid-cols-2">
+          <div className="flex justify-center lg:h-[700px] md:h-[600px]">
+            <ul className="grid lg:gap-12 md:gap-5 lg:grid-cols-3 md:grid-cols-2">
               {projectos.map((projectos) =>
                 categoryIn == "" ? (
                   <ListProjects
