@@ -1,75 +1,52 @@
 import "./Projects.css";
 import ListProjects from "../Projects/ListProjects";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ButtonTools from "../Projects/ListProjects/FilterButtonTools";
 import ButtonCategory from "../Projects/ListProjects/FilterButtonCategory";
 
 function Projects() {
-  const projectos = [
-    {
-      category: ["Front End", "HTML", "JAVASCRIPT", "CSS", "SASS"],
-      firstImg: "./1/firstImg.png",
-      secImg: "./1/secImg.jpg",
-      tools: ["HTML", "JS", "CSS", "SASS"],
-      hrefWeb: "https://zeroryper.github.io/Ableton_Bocchi/",
-      id: 1,
-    },
-    {
-      category: ["Front End", "REACT", "CSS", "HTML", "JAVASCRIPT"],
-      firstImg: "./2/firstImg.png",
-      secImg: "./2/secImg.png",
-      tools: ["REACT", "CSS", "HTML", "JS"],
-      hrefWeb: "https://zeroryper.github.io/org/",
-      id: 2,
-    },
-    {
-      category: [
-        "Front End",
-        "REACT",
-        "CSS",
-        "HTML",
-        "JAVASCRIPT",
-        "TAILWINDCSS",
-      ],
-      firstImg: "./3/firstImg.png",
-      secImg:
-        "https://help.nflxext.com/43e0db2f-fea0-4308-bfb9-09f2a88f6ee4_what_is_netflix_1_en.png",
-      tools: ["REACT", "CSS", "HTML", "JS", "TAILWINDCSS"],
-      hrefWeb: "https://zeroryper.github.io/react-challenge-alura/",
-      id: 3,
-    },
-    {
-      category: ["Front End", "HTML", "JAVASCRIPT", "CSS", "SASS"],
-      firstImg:
-        "https://github.com/ZeroRyper/Challenge-Oracle-ONE-Encriptador/blob/master/assets/Screenshot.png?raw=true",
-      secImg:
-        "https://kinsta.com/wp-content/uploads/2023/07/what-is-encryption.jpg",
-      tools: ["HTML", "JS", "CSS", "SASS"],
-      hrefWeb: "https://zeroryper.github.io/Challenge-Oracle-ONE-Encriptador/",
-      id: 4,
-    },
-    {
-      category: ["Front End", "REACT", "HTML", "CSS", "JAVASCRIPT"],
-      firstImg: "./4/firstImg.png",
-      secImg:
-        "https://www.cnet.com/personal-finance/assets/uploads/resize/1149dab9bcfeb6dfe75fc2f7df9ac3db6be6b7a3/m1/2023/06/OnlineBankingGettyImages01-scaled.jpg?auto=webp",
-      tools: ["REACT", "HTML", "CSS", "JS"],
-      hrefWeb: "https://zeroryper.github.io/smartbank/build/",
-      id: 5,
-    },
-  ];
-  const tools = ["REACT", "JAVASCRIPT", "HTML", "CSS", "SASS", "TAILWINDCSS"];
-  const category = ["Front End", "Back End", "Animation", "Games", "Art"];
   const [categoryIn, setCategoryIn] = useState("");
+
+  const [categories, setCategory] = useState([]);
+  const [tools, setTool] = useState([]);
+  const [projects, setProject] = useState([]);
+  const [toolsDetail, setToolsDetail] = useState([]);
+
+  const loadProjectList = async () => {
+    const response = await fetch("http://localhost:4000/getProjects");
+    const data = await response.json();
+    setProject(data);
+    const response2 = await fetch("http://localhost:4000/getCategories");
+    const data2 = await response2.json();
+    setCategory(data2);
+
+    const response3 = await fetch("http://localhost:4000/getTools");
+    const data3 = await response3.json();
+    setTool(data3);
+    
+    const response4 = await fetch("http://localhost:4000/getDetailsTools");
+    const data4 = await response4.json();
+    setToolsDetail(data4);
+  };
+  const uniqueData = new Set(projects.map((obj) => obj.id));
+  // Convert the Set back to an array if needed
+  const uniqueDataArray = [...uniqueData].map((id) =>
+    projects.find((obj) => obj.id === id)
+  );
+  
+  useEffect(() => {
+    loadProjectList();
+  }, []);
+
   return (
     <section className="" id="projects">
       <div className="grid grid-cols-1 gap-20">
         <h2 className="text-center text-white text-9xl font-bills">PROJECTS</h2>
         <div className="grid grid-cols-1 gap-10">
           <ul className="flex justify-center w-full">
-            {category.map((item, key) => (
+            {categories.map((item, key) => (
               <ButtonCategory
-                title={item}
+                title={item.categorynames}
                 key={key}
                 setCategoryIn={setCategoryIn}
               />
@@ -79,37 +56,56 @@ function Projects() {
             {tools.map((element, key) => (
               <ButtonTools
                 key={key}
-                title={element}
+                title={element.toolsnames}
                 setCategoryIn={setCategoryIn}
               />
             ))}
           </ul>
           <div className="flex justify-center lg:h-[700px] md:h-[600px]">
             <ul className="grid lg:gap-12 md:gap-5 lg:grid-cols-3 md:grid-cols-2">
-              {projectos.map((projectos) =>
-                categoryIn == "" ? (
-                  <ListProjects
-                    firstImg={projectos.firstImg}
-                    tools={projectos.tools}
-                    secImg={projectos.secImg}
-                    hrefWeb={projectos.hrefWeb}
-                    key={projectos.id}
-                  />
-                ) : (
-                  projectos.category.map(
-                    (category) =>
-                      categoryIn == category && (
+              {categoryIn !== "" ? (
+                  <>
+                    {projects.map(
+                      (project, key) =>
+                        categoryIn === project.toolsnames && (
+                          <ListProjects
+                            firstImg={project.firsturlimg}
+                            toolsDetail={toolsDetail}
+                            secImg={project.securlimg}
+                            hrefWeb={project.hrefweb}
+                            key={key}
+                            id={project.id}
+                          />
+                        )
+                    )}
+                    {uniqueDataArray.map((project, key) =>
+                      categoryIn === project.categorynames && (
                         <ListProjects
-                          firstImg={projectos.firstImg}
-                          tools={projectos.tools}
-                          secImg={projectos.secImg}
-                          hrefWeb={projectos.hrefWeb}
-                          key={projectos.id}
+                          firstImg={project.firsturlimg}
+                          toolsDetail={toolsDetail}
+                          secImg={project.securlimg}
+                          hrefWeb={project.hrefweb}
+                          key={key}
+                          id={project.id}
                         />
-                      )
-                  )
-                )
-              )}
+                      ) 
+                    )}
+
+                  </>
+                ) : (
+                  <>
+                    {uniqueDataArray.map((project, key) => (
+                      <ListProjects
+                        firstImg={project.firsturlimg}
+                        toolsDetail={toolsDetail}
+                        secImg={project.securlimg}
+                        hrefWeb={project.hrefweb}
+                        key={key}
+                        id={project.id}
+                      />
+                    ))}
+                  </>
+                )}
             </ul>
           </div>
         </div>

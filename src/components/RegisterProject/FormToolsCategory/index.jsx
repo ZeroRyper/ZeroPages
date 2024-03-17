@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 function FormToolsCategory() {
     const [detailsToCa, setDetailsToCa] = useState({
@@ -24,14 +24,15 @@ function FormToolsCategory() {
         }
       };
       const handleChange = (e) => {
-        setDetailsToCa({ ...detailsToCa, [e.target.name]: e.target.value });
+        setDetailsToCa({ ...detailsToCa, [e.target.name]:  e.target.value});
       };
+
   return (
     <form onSubmit={handleSubmit} className="grid grid-cols-1 justify-items-center">
     <label htmlFor="">New Tools</label>
-    <input name='toolsNames' onChange={handleChange} type="text" className="border-black border-2" />
+    <input name='toolsNames' value={detailsToCa.toolsNames}  onChange={handleChange} type="text" className="border-black border-2" />
     <label htmlFor="">New Category</label>
-    <input name='categoryNames' onChange={handleChange} type="text" className="border-black border-2" />
+    <input name='categoryNames' value={detailsToCa.categoryNames} onChange={handleChange} type="text" className="border-black border-2" />
     <button type="submit">Guardar</button>
 
   </form>

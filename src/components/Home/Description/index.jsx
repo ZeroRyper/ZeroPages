@@ -5,7 +5,7 @@ import References from "./References";
 function Description() {
   const [referenceShow, setShowReferences] = useState(true);
   return (
-    <serction className="flex justify-center w-full" id="descrip">
+    <section className="flex justify-center w-full" id="descrip">
       <div className="grid grid-cols-2 gap-10 ">
         <div className="card mx-10 lg:w-[45rem] md:w-[25rem] bg-white">
           <img
@@ -59,7 +59,7 @@ function Description() {
           )}
         </div>
       </div>
-    </serction>
+    </section>
   );
 }
 

@@ -6,29 +6,47 @@ import FormProject from "./FormProject";
 
 function RegisterProject() {
   const projectID = uuidv4();
+
   const [project, setProject] = useState({
     id: projectID,
     title: "",
-    firstImg: "",
-    secImg: "",
     hrefWeb: "",
+    dates: new Date(Date.now()).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }),
+
   });
   const [details, setDetails] = useState({
     id_project: projectID,
     id_tools: [],
-    id_category: "",
+    id_category: 1,
+  });
+  const [file, setFile] = useState({
+    firstImg: [],
+    secImg: [],
   });
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:4000/registerP/projects", {
-        method: "POST",
-        body: JSON.stringify(project),
-        headers: { "Content-Type": "application/json" },
-      });
+    const formData = new FormData();
 
+    formData.append("firstImg", file.firstImg);
+    formData.append("secImg", file.secImg);
+    formData.append("id", project.id);
+    formData.append("title", project.title);
+    formData.append("dates", project.dates);
+    formData.append("hrefWeb", project.hrefWeb);
+    try {
+      const response = await fetch(
+        "http://localhost:4000/registerP/projects",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       const data = await response.json();
-      console.log(data); // Log data from the first fetch
+      console.log(data); // Log data from the second fetch
 
       console.log("Details registration successful"); // Or handle the response from the second fetch
     } catch (error) {
@@ -49,16 +67,16 @@ function RegisterProject() {
       console.error("Error:", error);
     }
   };
-  console.log(project, details);
   const handleChangeProject = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value });
   };
-
+  const handleFileChange = (e) => {
+    setFile({ ...file, [e.target.name]: e.target.files[0] });
+  };
   const handleChangeDetails = (e) => {
-    const { value, name, checked } = e.target; // Extract name and checked state
+    const { value, name, checked } = e.target;
     const valueInt = parseInt(value);
     let delElem = details.id_tools.indexOf(valueInt);
-    console.log(delElem);
     if (checked) {
       setDetails({
         ...details,
@@ -69,7 +87,9 @@ function RegisterProject() {
     } else {
       setDetails((details) => ({
         ...details,
-        id_tools: details.id_tools.filter((tool) => tool !== details.id_tools[delElem]),
+        id_tools: details.id_tools.filter(
+          (tool) => tool !== details.id_tools[delElem]
+        ),
       }));
     }
   };
@@ -79,9 +99,12 @@ function RegisterProject() {
         onSubmit={handleSubmit}
         className=" grid grid-cols-1 justify-items-center"
       >
-        <FormProject handleChangeProject={handleChangeProject} />
+        <FormProject
+          handleFileChange={handleFileChange}
+          handleChangeProject={handleChangeProject}
+        />
         <FormDetails handleChangeDetails={handleChangeDetails} />
-        <button onClick={() => window.location.reload()} type="submit">Guardar</button>
+        <button type="submit">Guardar</button>
       </form>
       <FormToolsCategory />
     </section>

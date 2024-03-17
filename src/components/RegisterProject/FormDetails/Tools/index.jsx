@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./ToolsForm.css"; // Import the CSS file
 
 function Tools({ handleChangeDetails }) {
   const [isOpen, setIsOpen] = useState(false); // State to toggle dropdown visibility
   const [selectedValues, setSelectedValues] = useState([]); // Array to store selected values
+  const [tools, setTool] = useState([]);
   const dropdownRef = useRef(null); // Ref for the dropdown element
 
   const handleCheckboxChange = (event) => {
@@ -25,7 +26,13 @@ function Tools({ handleChangeDetails }) {
     setIsOpen(false);
   };
 
+  const loadTools = async () => {
+    const response = await fetch("http://localhost:4000/getTools");
+    const data = await response.json();
+    setTool(data);
+  };
   useEffect(() => {
+    loadTools();
     document.addEventListener("click", handleOutsideClick);
     return () => document.removeEventListener("click", handleOutsideClick);
   }, [isOpen]); // Update listener only when isOpen changes
@@ -52,46 +59,18 @@ function Tools({ handleChangeDetails }) {
         <dd className={isOpen ? "" : "hidden"}>
           <div className="mutliSelect">
             <ul>
-              <li onChange={handleCheckboxChange}>
-                <input
-                  id="HTML"
-                  type="checkbox"
-                  value={1}
-                  name="id_tools"
-                  onChange={handleChangeDetails}
-                />
-                <label htmlFor="folio">Html</label>
-              </li>
-              <li onChange={handleCheckboxChange}>
-                <input
-                  id="CSS"
-                  type="checkbox"
-                  value={2}
-                  name="id_tools"
-                  onChange={handleChangeDetails}
-                />
-                <label htmlFor="CSS">CSS</label>
-              </li>
-              <li onChange={handleCheckboxChange}>
-                <input
-                  id="SASS"
-                  type="checkbox"
-                  value={3}
-                  name="id_tools"
-                  onChange={handleChangeDetails}
-                />
-                <label htmlFor="SASS">SASS</label>
-              </li>
-              <li onChange={handleCheckboxChange}>
-                <input
-                  id="JAVASCRIPT"
-                  type="checkbox"
-                  value={4}
-                  name="id_tools"
-                  onChange={handleChangeDetails}
-                />
-                <label htmlFor="JAVASCRIPT">JAVASCRIPT</label>
-              </li>
+              {tools.map((tool, key) => (
+                <li key={key} onChange={handleCheckboxChange}>
+                  <input
+                    id={tool.toolsnames}
+                    type="checkbox"
+                    value={tool.id}
+                    name="id_tools"
+                    onChange={handleChangeDetails}
+                  />
+                  <label htmlFor="folio">{tool.toolsnames}</label>
+                </li>
+              ))}
             </ul>
           </div>
         </dd>
