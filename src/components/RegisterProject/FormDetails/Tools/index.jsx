@@ -1,7 +1,12 @@
 import { useState, useRef, useEffect } from "react";
-import "./ToolsForm.css"; // Import the CSS file
+import "./ToolsForm.css"; 
+import PropTypes from 'prop-types';
+
 
 function Tools({ handleChangeDetails }) {
+  Tools.propTypes = {
+    handleChangeDetails: PropTypes.func,
+  };
   const [isOpen, setIsOpen] = useState(false); // State to toggle dropdown visibility
   const [selectedValues, setSelectedValues] = useState([]); // Array to store selected values
   const [tools, setTool] = useState([]);

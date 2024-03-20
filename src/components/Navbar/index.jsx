@@ -11,7 +11,6 @@ function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
-
       if (currentScrollPos > prevScrollPos) {
         setIsSticky("show");
       } else if (currentScrollPos < prevScrollPos) {
